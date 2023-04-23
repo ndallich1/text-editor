@@ -13,7 +13,7 @@ const initdb = async () =>
   });
 
 // method that accepts some content and adds it to the database
-export const putDb = async (id, content) => {
+export const putDb = async (content) => {
   console.log("PUT to the database");
   // Create a connection to the database database and version we want to use.
   const jateDb = await openDB("jate", 1);
