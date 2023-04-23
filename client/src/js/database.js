@@ -31,13 +31,17 @@ export const putDb = async (content) => {
 // method that gets all the content from the database
 export const getDb = async () => {
   console.log("GET all from the database");
-  const jateDb = await openDB("jate", 1);
-  const tx = jateDb.transaction("jate", "readonly");
-  const store = tx.objectStore("jate");
-  const request = store.getAll();
-  const result = await request;
-  console.log("result.value", result);
-  return result;
+  try {
+    const jateDb = await openDB("jate", 1);
+    const tx = jateDb.transaction("jate", "readonly");
+    const store = tx.objectStore("jate");
+    const request = store.getAll();
+    const result = await request;
+    console.log(result[0]);
+    return result[0].jate;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 initdb();
